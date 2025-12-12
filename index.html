@@ -19,14 +19,15 @@
       text-align: center;
     }
 
-    img {
-      width: 220px; /* أكبر قليلاً من النص */
-      margin-bottom: 10px; /* مسافة صغيرة جداً بين اللوغو والنص */
-    }
-
     h1 {
       font-size: 28px;
       margin: 0 0 25px 0;
+    }
+
+    img {
+      height: calc(28px * 2); /* ضعف حجم النص */
+      margin-bottom: 2px;     /* أقرب ما يمكن للنص */
+      width: auto;            /* يحافظ على نسبة العرض والارتفاع الأصلية للوغو */
     }
 
     .btn {
