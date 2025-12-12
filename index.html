@@ -11,33 +11,33 @@
       padding: 0;
       background: #ffffff;
       font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 120vh; /* الصفحة أطول قليلاً */
       text-align: center;
-      padding-top: 50px; /* المسافة من الأعلى */
+    }
+
+    .container {
+      margin-top: 40px; /* مسافة بسيطة من بداية الصفحة */
     }
 
     img {
-      width: 1200px; /* حجم اللوغو الكبير */
-      max-width: 90vw; /* متجاوب مع الشاشات الصغيرة */
+      width: 1200px; /* حجم اللوغو الكبير كما طلبت */
+      max-width: 90vw;
       height: auto;
-      margin-bottom: 0px; /* تقليل المسافة للحد الأدنى */
+      display: block;
+      margin: 0 auto;
     }
 
     .btn {
+      display: block;
+      margin: 6px auto 0 auto; /* قريب جدًا من اللوغو */
       padding: 12px 28px;
       font-size: 18px;
       background: black;
       color: white;
       border: none;
       border-radius: 6px;
+      text-decoration: none;
       cursor: pointer;
       transition: 0.3s;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 2px; /* رفع الزر مباشرة تحت اللوغو */
     }
 
     .btn:hover {
@@ -48,11 +48,10 @@
 
 <body>
 
-  <!-- Logo -->
-  <img src="logo.png" alt="Autospot Logo">
-
-  <!-- Button -->
-  <a href="PUT_YOUR_GOOGLE_FORM_LINK_HERE" class="btn">Register your car</a>
+  <div class="container">
+    <img src="logo.png" alt="Autospot Logo">
+    <a href="PUT_YOUR_GOOGLE_FORM_LINK_HERE" class="btn">Register your car</a>
+  </div>
 
 </body>
 </html>
