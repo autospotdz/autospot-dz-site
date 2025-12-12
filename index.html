@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Autospot DZ</title>
-
   <style>
     body {
       margin: 0;
@@ -15,11 +14,14 @@
     }
 
     .container {
-      margin-top: 40px; /* مسافة بسيطة من بداية الصفحة */
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     img {
-      width: 1200px; /* حجم اللوغو الكبير كما طلبت */
+      width: 1200px; /* الحجم الحالي للوغو */
       max-width: 90vw;
       height: auto;
       display: block;
@@ -27,25 +29,28 @@
     }
 
     .btn {
-      display: block;
-      margin: 6px auto 0 auto; /* قريب جدًا من اللوغو */
+      position: absolute;
+      top: 50%; /* منتصف اللوغو تقريبًا */
+      transform: translateY(2cm); /* بعد 2 سم أسفل منتصف اللوغو */
+      left: 50%;
+      transform: translate(-50%, 2cm);
       padding: 12px 28px;
       font-size: 18px;
       background: black;
       color: white;
       border: none;
       border-radius: 6px;
-      text-decoration: none;
       cursor: pointer;
+      text-decoration: none;
       transition: 0.3s;
     }
 
     .btn:hover {
       opacity: 0.8;
     }
+
   </style>
 </head>
-
 <body>
 
   <div class="container">
