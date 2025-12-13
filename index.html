@@ -22,7 +22,7 @@
     }
 
     img {
-      width: 1200px; /* نفس حجم اللوغو */
+      width: 1200px;
       max-width: 90vw;
       height: auto;
       display: block;
@@ -49,7 +49,6 @@
       opacity: 0.8;
     }
 
-    /* Footer */
     .footer {
       margin-top: 140px;
       font-size: 13px;
@@ -66,7 +65,6 @@
     .footer a:hover {
       color: #000;
     }
-
   </style>
 </head>
 
@@ -77,21 +75,48 @@
 
     <a
       href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor"
-      class="btn"
+      class="btn car-sound"
       target="_blank"
     >
       Register your car
     </a>
   </div>
 
-  <!-- Simple footer links -->
   <div class="footer">
-    <a href="https://www.instagram.com/autospot.dz/?igsh=dnhhbjVubzFtMmY3#" target="_blank">Instagram</a>
+    <a href="https://www.instagram.com/autospot.dz/?igsh=dnhhbjVubzFtMmY3#" target="_blank" class="click-sound">Instagram</a>
     ·
-    <a href="https://www.tiktok.com/@autospot.dz?_r=1&_t=ZS-92AmG4ykFrm" target="_blank">TikTok</a>
+    <a href="https://www.tiktok.com/@autospot.dz?_r=1&_t=ZS-92AmG4ykFrm" target="_blank" class="click-sound">TikTok</a>
     ·
-    <a href="mailto:autospotdz01@gmail.com">Contact us</a>
+    <a href="mailto:autospotdz01@gmail.com" class="click-sound">Contact us</a>
   </div>
+
+  <!-- Sounds -->
+  <audio id="clickSound">
+    <source src="click.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="carSound">
+    <source src="car.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const clickSound = document.getElementById("clickSound");
+    const carSound = document.getElementById("carSound");
+
+    document.querySelectorAll(".click-sound").forEach(el => {
+      el.addEventListener("click", () => {
+        clickSound.currentTime = 0;
+        clickSound.play();
+      });
+    });
+
+    document.querySelectorAll(".car-sound").forEach(el => {
+      el.addEventListener("click", () => {
+        carSound.currentTime = 0;
+        carSound.play();
+      });
+    });
+  </script>
 
 </body>
 </html>
