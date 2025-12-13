@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Autospot DZ</title>
+
   <style>
     body {
       margin: 0;
@@ -20,8 +21,9 @@
       margin: 0 auto;
     }
 
+    /* الوضع الافتراضي (لابتوب / شاشات كبيرة) */
     img {
-      width: 1200px; /* الحجم الحالي للوغو */
+      width: 1200px;
       max-width: 90vw;
       height: auto;
       display: block;
@@ -30,16 +32,14 @@
 
     .btn {
       position: absolute;
-      top: 50%; /* منتصف اللوغو تقريبًا */
+      top: 50%;
       left: 50%;
-      transform: translate(-50%, 5cm); /* بعد 5 سم أسفل منتصف اللوغو */
+      transform: translate(-50%, 5cm);
       padding: 12px 28px;
       font-size: 18px;
       background: black;
       color: white;
-      border: none;
       border-radius: 6px;
-      cursor: pointer;
       text-decoration: none;
       transition: 0.3s;
     }
@@ -48,13 +48,28 @@
       opacity: 0.8;
     }
 
+    /* ✅ تخصيص الهاتف */
+    @media (max-width: 768px) {
+      img {
+        width: 140vw; /* يجعل اللوغو أكبر من عرض الهاتف */
+        max-width: none;
+      }
+
+      .btn {
+        transform: translate(-50%, 4cm); /* أقرب بصريًا مثل اللابتوب */
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <div class="container">
     <img src="logo.png" alt="Autospot Logo">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor" class="btn">Register your car</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor"
+       class="btn">
+       Register your car
+    </a>
   </div>
 
 </body>
