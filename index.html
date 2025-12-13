@@ -21,16 +21,14 @@
       margin: 0 auto;
     }
 
-    /* Logo */
     img {
-      width: 1200px;
+      width: 1200px; /* نفس حجم اللوغو */
       max-width: 90vw;
       height: auto;
       display: block;
-      margin: 20px auto 0;
+      margin: 0 auto;
     }
 
-    /* Register button */
     .btn {
       position: absolute;
       top: 50%;
@@ -40,7 +38,9 @@
       font-size: 18px;
       background: black;
       color: white;
+      border: none;
       border-radius: 6px;
+      cursor: pointer;
       text-decoration: none;
       transition: 0.3s;
     }
@@ -49,9 +49,9 @@
       opacity: 0.8;
     }
 
-    /* Footer links */
+    /* Footer */
     .footer {
-      margin-top: 120px;
+      margin-top: 140px;
       font-size: 13px;
       color: #777;
     }
@@ -67,19 +67,6 @@
       color: #000;
     }
 
-    /* Mobile fix */
-    @media (max-width: 768px) {
-      img {
-        width: 140vw;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .btn {
-        transform: translate(-50%, 4cm);
-      }
-    }
   </style>
 </head>
 
@@ -89,7 +76,7 @@
     <img src="logo.png" alt="Autospot Logo">
 
     <a
-      href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform"
+      href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor"
       class="btn"
       target="_blank"
     >
@@ -97,7 +84,7 @@
     </a>
   </div>
 
-  <!-- Footer -->
+  <!-- Simple footer links -->
   <div class="footer">
     <a href="https://www.instagram.com/autospot.dz/?igsh=dnhhbjVubzFtMmY3#" target="_blank">Instagram</a>
     ·
