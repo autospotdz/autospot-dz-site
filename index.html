@@ -1,21 +1,61 @@
-img {
-  width: 1200px;
-  max-width: 90vw;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autospot DZ</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
 
-/* الهاتف */
-@media (max-width: 768px) {
-  img {
-    width: 140vw;          /* لوغو كبير */
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%); /* إبقاؤه في الوسط */
-  }
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-  .btn {
-    transform: translate(-50%, 4cm);
-  }
-}
+    img {
+      width: 1200px; /* الحجم الحالي للوغو */
+      max-width: 90vw;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .btn {
+      position: absolute;
+      top: 50%; /* منتصف اللوغو تقريبًا */
+      left: 50%;
+      transform: translate(-50%, 5cm); /* بعد 5 سم أسفل منتصف اللوغو */
+      padding: 12px 28px;
+      font-size: 18px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      opacity: 0.8;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="logo.png" alt="Autospot Logo">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor" class="btn">Register your car</a>
+  </div>
+
+</body>
+</html>
