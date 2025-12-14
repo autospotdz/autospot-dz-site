@@ -1,9 +1,20 @@
-{
-  "brand": "BMW",
-  "model": "E92",
-  "year": "2008",
-  "image": "available_cars/BMW/BMW_E92_2008/front.jpg",
-  "instagram": "LINK",
-  "tiktok": "LINK",
-  "sold": false
-}
+[
+  {
+    "brand": "BMW",
+    "model": "E92",
+    "year": 2008,
+    "image": "available_cars/bmw_e92_2008_front.jpeg",
+    "instagram": "https://www.instagram.com/POST_LINK",
+    "tiktok": "https://www.tiktok.com/POST_LINK",
+    "sold": false
+  },
+  {
+    "brand": "Toyota",
+    "model": "Corolla",
+    "year": 2015,
+    "image": "available_cars/toyota_corolla_2015_front.jpeg",
+    "instagram": "https://www.instagram.com/POST_LINK",
+    "tiktok": "https://www.tiktok.com/POST_LINK",
+    "sold": false
+  }
+]
