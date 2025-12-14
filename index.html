@@ -108,7 +108,7 @@
     <img src="logo.png" alt="Autospot Logo">
   </div>
 
-  <!-- عرض السيارات -->
+  <!-- عرض السيارات يأتي مباشرة بعد الشعار -->
   <div class="car-container" id="carContainer"></div>
 
   <!-- زر Register your car بعد عرض السيارات -->
@@ -167,7 +167,7 @@
           if(car.sold) return; // تجاهل السيارات المباعة
 
           let current = 0;
-          const images = car.images; // الصور الفعلية فقط
+          const images = car.images;
           const card = document.createElement("div");
           card.className = "car-card";
 
