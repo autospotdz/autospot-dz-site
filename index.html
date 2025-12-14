@@ -32,11 +32,8 @@
     .subtitle {
       font-size: 20px;
       color: #333;
+      margin-top: 10px;
       font-weight: bold;
-      position: absolute;
-      top: 30%; /* فوق منتصف اللوغو قليلاً */
-      left: 50%;
-      transform: translate(-50%, -50%);
     }
 
     .btn {
@@ -77,12 +74,12 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 60px; /* عرض السيارات قريب من الجملة */
+      margin-top: 100px; /* اللابتوب */
     }
 
     @media screen and (max-width: 768px) {
       .car-container {
-        margin-top: 20px; /* الهاتف */
+        margin-top: 40px; /* الهاتف */
       }
     }
 
@@ -95,6 +92,11 @@
       .register-btn-container {
         margin-top: 200px;
       }
+    }
+
+    /* Footer مسافة دقيقة */
+    .footer {
+      margin-top: 80px; /* بين زر Register والأزرار */
     }
 
     .car-card {
@@ -131,13 +133,13 @@
 
 <body>
 
-  <!-- شعار والجملة فوقه -->
-  <div class="container" style="position: relative;">
-    <div class="subtitle">Online Car Showroom</div>
+  <!-- شعار -->
+  <div class="container">
     <img src="logo.png" alt="Autospot Logo">
+    <div class="subtitle">Online Car Showroom</div>
   </div>
 
-  <!-- عرض السيارات مباشرة تحت الجملة -->
+  <!-- عرض السيارات مباشرة تحت اللوغو -->
   <div class="car-container" id="carContainer"></div>
 
   <!-- زر Register your car بعد السيارات -->
