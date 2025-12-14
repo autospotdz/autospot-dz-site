@@ -1,8 +1,8 @@
 [
   {
-    "brand": "test",
-    "model": "test",
-    "year": 2000,
+    "brand": "toyota",
+    "model": "corolla",
+    "year": 2015,
     "images_folder": "available_cars/bmw_e92_2008",
     "instagram": "https://www.instagram.com/POST_LINK",
     "tiktok": "https://www.tiktok.com/POST_LINK",
