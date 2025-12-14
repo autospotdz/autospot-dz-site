@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Autospot DZ</title>
-
   <style>
     body {
       margin: 0;
@@ -21,22 +20,59 @@
       margin: 0 auto;
     }
 
-    img {
+    img#logo {
       width: 1200px;
       max-width: 90vw;
       height: auto;
       display: block;
       margin: 0 auto;
+      position: relative;
+      z-index: 1; /* اللوغو layer أسفل الجملة */
     }
 
-    .subtitle {
-      font-size: 20px;
-      color: #333;
-      margin-top: 10px;
+    .overlay-text {
+      position: absolute;
+      top: 50%; /* تقريب منتصف اللوغو */
+      transform: translate(-50%, 50px); /* تحت منتصف اللوغو بـ 50px */
+      left: 50%;
+      font-size: 36px;
       font-weight: bold;
+      color: black;
+      z-index: 2; /* فوق اللوغو */
     }
 
-    .btn {
+    .car-container {
+      position: absolute;
+      top: 50%; /* نرفعها فوق الجملة واللوغو */
+      transform: translate(-50%, -200px); /* تعديل حسب حجم الصور لتظهر فوقهم */
+      left: 50%;
+      width: 90%;
+      max-width: 1200px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      z-index: 3; /* أعلى layer */
+    }
+
+    .car-card {
+      width: 280px;
+      position: relative;
+    }
+
+    .car-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .car-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+    }
+
+    .btn, .call-btn {
       padding: 12px 28px;
       font-size: 18px;
       background: black;
@@ -48,14 +84,14 @@
       transition: 0.3s;
     }
 
-    .btn:hover {
+    .btn:hover, .call-btn:hover {
       opacity: 0.8;
     }
 
     .footer {
+      margin-top: 20px;
       font-size: 13px;
-      color: #777;
-      margin-bottom: 40px;
+      color: #000;
     }
 
     .footer a {
@@ -66,103 +102,42 @@
     }
 
     .footer a:hover {
-      color: #000;
+      color: #777;
     }
-
-    /* السيارات */
-    .car-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 100px; /* اللابتوب */
-    }
-
-    @media screen and (max-width: 768px) {
-      .car-container {
-        margin-top: 40px; /* الهاتف */
-      }
-    }
-
-    /* زر Register */
-    .register-btn-container {
-      margin-top: 200px; /* بين السيارات والزر */
-    }
-
-    @media screen and (max-width: 768px) {
-      .register-btn-container {
-        margin-top: 200px;
-      }
-    }
-
-    /* Footer مسافة دقيقة */
-    .footer {
-      margin-top: 80px; /* بين زر Register والأزرار */
-    }
-
-    .car-card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      margin: 10px;
-      padding: 10px;
-      width: 280px;
-      position: relative;
-    }
-
-    .car-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 6px;
-    }
-
-    .prev-btn, .next-btn {
-      position: absolute;
-      top: 45%;
-      background: rgba(0,0,0,0.5);
-      color: white;
-      border: none;
-      font-size: 20px;
-      padding: 4px 8px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-
-    .prev-btn { left: 5px; }
-    .next-btn { right: 5px; }
   </style>
 </head>
-
 <body>
 
-  <!-- شعار -->
   <div class="container">
-    <img src="logo.png" alt="Autospot Logo">
-    <div class="subtitle">Online Car Showroom</div>
-  </div>
+    <img src="logo.png" alt="Autospot Logo" id="logo">
+    <div class="overlay-text">Online Car Showroom</div>
 
-  <!-- عرض السيارات مباشرة تحت اللوغو -->
-  <div class="car-container" id="carContainer"></div>
+    <!-- Car container -->
+    <div class="car-container" id="carContainer">
+      <!-- السيارات سيتم توليدها من JSON -->
+    </div>
 
-  <!-- زر Register your car بعد السيارات -->
-  <div class="register-btn-container" style="text-align:center;">
+    <!-- زر تسجيل السيارة -->
     <a
       href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor"
       class="btn car-sound"
       target="_blank"
+      style="position: relative; margin-top: 400px; z-index:1;"
     >
       Register your car
     </a>
+
+    <!-- Footer -->
+    <div class="footer">
+      <a href="https://www.instagram.com/autospot.dz/?igsh=dnhhbjVubzFtMmY3#" target="_blank" class="click-sound">Instagram</a>
+      ·
+      <a href="https://www.tiktok.com/@autospot.dz?_r=1&_t=ZS-92AmG4ykFrm" target="_blank" class="click-sound">TikTok</a>
+      ·
+      <a href="mailto:autospotdz01@gmail.com" class="click-sound">Contact us</a>
+    </div>
   </div>
 
-  <!-- أزرار Instagram, TikTok, Contact us -->
-  <div class="footer">
-    <a href="https://www.instagram.com/autospot.dz/?igsh=dnhhbjVubzFtMmY3#" target="_blank" class="click-sound">Instagram</a>
-    ·
-    <a href="https://www.tiktok.com/@autospot.dz?_r=1&_t=ZS-92AmG4ykFrm" target="_blank" class="click-sound">TikTok</a>
-    ·
-    <a href="mailto:autospotdz01@gmail.com" class="click-sound">Contact us</a>
-  </div>
-
-  <!-- أصوات -->
+  <!-- Sounds -->
   <audio id="clickSound">
     <source src="click.mp3" type="audio/mpeg">
   </audio>
@@ -189,49 +164,64 @@
       });
     });
 
-    // جلب السيارات من cars.json
-    fetch('cars.json')
-      .then(response => response.json())
-      .then(data => {
-        const container = document.getElementById("carContainer");
-        data.forEach(car => {
-          if(car.sold) return; // تجاهل السيارات المباعة
+    // مثال JSON للسيارات
+    const cars = [
+      {
+        name: "Toyota Corolla 2015",
+        folder: "available_cars/toyota_corolla_2015_c1",
+        instagram: "#",
+        tiktok: "#"
+      },
+      {
+        name: "BMW E92 2008",
+        folder: "available_cars/bmw_e92_2008_c1",
+        instagram: "#",
+        tiktok: "#"
+      }
+    ];
 
-          let current = 0;
-          const images = car.images;
-          const card = document.createElement("div");
-          card.className = "car-card";
+    const carContainer = document.getElementById("carContainer");
 
-          card.innerHTML = `
-            <div style="position:relative;">
-              <img src="${images[current]}" class="car-main-image">
-              ${images.length > 1 ? '<button class="prev-btn">&#10094;</button><button class="next-btn">&#10095;</button>' : ''}
-            </div>
-            <h3>${car.brand} ${car.model} ${car.year}</h3>
-            <a href="tel:${car.phone}" style="display:block;margin:10px 0;padding:10px 0;background:black;color:white;border-radius:6px;text-decoration:none;">Call</a>
-            <div style="margin-top:8px;">
-              <a href="${car.instagram}" target="_blank" style="margin:0 5px;color:black;text-decoration:none;font-size:14px;">Instagram</a>
-              <a href="${car.tiktok}" target="_blank" style="margin:0 5px;color:black;text-decoration:none;font-size:14px;">TikTok</a>
-            </div>
-          `;
+    cars.forEach(car => {
+      const carCard = document.createElement("div");
+      carCard.className = "car-card";
 
-          container.appendChild(card);
+      // نعرض الصور تلقائيًا (1.jpeg إلى 4.jpeg إذا موجودة)
+      for(let i=1;i<=4;i++){
+        const img = document.createElement("img");
+        img.src = `${car.folder}/${i}.jpeg`;
+        img.onerror = ()=>{img.style.display='none'}; // إذا الصورة غير موجودة تختفي
+        carCard.appendChild(img);
+      }
 
-          if(images.length > 1){
-            const imgElement = card.querySelector(".car-main-image");
-            card.querySelector(".prev-btn").addEventListener("click", () => {
-              current = (current - 1 + images.length) % images.length;
-              imgElement.src = images[current];
-            });
-            card.querySelector(".next-btn").addEventListener("click", () => {
-              current = (current + 1) % images.length;
-              imgElement.src = images[current];
-            });
-          }
-        });
-      })
-      .catch(err => console.error("Error loading cars.json:", err));
+      // أزرار Instagram و TikTok و Call
+      const btnDiv = document.createElement("div");
+      btnDiv.className = "car-buttons";
+
+      const instaBtn = document.createElement("a");
+      instaBtn.href = car.instagram;
+      instaBtn.target="_blank";
+      instaBtn.className="btn";
+      instaBtn.textContent="Instagram";
+      btnDiv.appendChild(instaBtn);
+
+      const tiktokBtn = document.createElement("a");
+      tiktokBtn.href = car.tiktok;
+      tiktokBtn.target="_blank";
+      tiktokBtn.className="btn";
+      tiktokBtn.textContent="TikTok";
+      btnDiv.appendChild(tiktokBtn);
+
+      const callBtn = document.createElement("a");
+      callBtn.href="tel:0673275377";
+      callBtn.className="call-btn";
+      callBtn.textContent="Call";
+      btnDiv.appendChild(callBtn);
+
+      carCard.appendChild(btnDiv);
+      carContainer.appendChild(carCard);
+    });
+
   </script>
-
 </body>
 </html>
