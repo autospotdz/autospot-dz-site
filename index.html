@@ -30,10 +30,6 @@
     }
 
     .btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, 5cm);
       padding: 12px 28px;
       font-size: 18px;
       background: black;
@@ -50,13 +46,13 @@
     }
 
     .footer {
-      margin-top: 140px;
+      margin-top: 40px;
       font-size: 13px;
       color: #777;
     }
 
     .footer a {
-      color: #000; /* أسود بدل الأزرق */
+      color: #000;
       text-decoration: none;
       margin: 0 10px;
       transition: 0.2s;
@@ -107,9 +103,16 @@
 
 <body>
 
+  <!-- شعار -->
   <div class="container">
     <img src="logo.png" alt="Autospot Logo">
+  </div>
 
+  <!-- عرض السيارات -->
+  <div class="car-container" id="carContainer"></div>
+
+  <!-- زر Register your car بعد عرض السيارات -->
+  <div style="text-align:center; margin:20px 0;">
     <a
       href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor"
       class="btn car-sound"
@@ -119,8 +122,7 @@
     </a>
   </div>
 
-  <div class="car-container" id="carContainer"></div>
-
+  <!-- أزرار Instagram, TikTok, Contact us -->
   <div class="footer">
     <a href="https://www.instagram.com/autospot.dz/?igsh=dnhhbjVubzFtMmY3#" target="_blank" class="click-sound">Instagram</a>
     ·
@@ -129,7 +131,7 @@
     <a href="mailto:autospotdz01@gmail.com" class="click-sound">Contact us</a>
   </div>
 
-  <!-- Sounds -->
+  <!-- أصوات -->
   <audio id="clickSound">
     <source src="click.mp3" type="audio/mpeg">
   </audio>
@@ -162,7 +164,7 @@
       .then(data => {
         const container = document.getElementById("carContainer");
         data.forEach(car => {
-          if(car.sold) return; // تجاهل المباعة
+          if(car.sold) return; // تجاهل السيارات المباعة
 
           let current = 0;
           const images = car.images; // الصور الفعلية فقط
