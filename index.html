@@ -29,11 +29,18 @@
       margin: 0 auto;
     }
 
+    /* جملة Available Cars */
     .subtitle {
       font-size: 20px;
       color: #333;
-      margin-top: 10px;
       font-weight: bold;
+      margin-top: 30px; /* اللابتوب */
+    }
+
+    @media screen and (max-width: 768px) {
+      .subtitle {
+        margin-top: 15px; /* الهاتف */
+      }
     }
 
     .btn {
@@ -70,40 +77,33 @@
     }
 
     /* السيارات */
-    .available-cars-title {
-      font-size: 22px;
-      font-weight: bold;
-      margin-top: 40px;
-      margin-bottom: 20px;
-    }
-
     .car-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 0; /* أصبح التحكم من العنوان */
+      margin-top: 50px; /* اللابتوب */
     }
 
     @media screen and (max-width: 768px) {
       .car-container {
-        margin-top: 0;
+        margin-top: 30px; /* الهاتف */
       }
     }
 
     /* زر Register */
     .register-btn-container {
-      margin-top: 200px; /* بين السيارات والزر */
+      margin-top: 50px; /* بين السيارات والزر */
     }
 
     @media screen and (max-width: 768px) {
       .register-btn-container {
-        margin-top: 200px;
+        margin-top: 30px;
       }
     }
 
     /* Footer مسافة دقيقة */
     .footer {
-      margin-top: 80px; /* بين زر Register والأزرار */
+      margin-top: 20px; /* بين زر Register والأزرار */
     }
 
     .car-card {
@@ -145,10 +145,10 @@
     <img src="logo.png" alt="Autospot Logo">
   </div>
 
-  <!-- عنوان Available Cars فوق قسم السيارات -->
-  <div class="available-cars-title">Available Cars:</div>
+  <!-- جملة Available Cars -->
+  <div class="subtitle">Available Cars:</div>
 
-  <!-- عرض السيارات مباشرة تحت العنوان -->
+  <!-- عرض السيارات مباشرة تحت اللوغو -->
   <div class="car-container" id="carContainer"></div>
 
   <!-- زر Register your car بعد السيارات -->
