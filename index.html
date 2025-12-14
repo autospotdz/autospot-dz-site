@@ -22,31 +22,18 @@
     }
 
     img {
-      width: 600px; /* نصف حجم اللابتوب */
+      width: 600px; /* صُغّر اللوغو ÷2 للّابتوب */
       max-width: 90vw;
       height: auto;
       display: block;
       margin: 0 auto;
     }
 
-    @media screen and (max-width: 768px) {
-      img {
-        width: 90vw; /* الهاتف يبقى كما هو */
-      }
-    }
-
-    /* جملة Available Cars */
-    .subtitle {
-      font-size: 20px;
-      color: #333;
+    .section-title {
+      font-size: 26px;
       font-weight: bold;
-      margin-top: 30px; /* اللابتوب */
-    }
-
-    @media screen and (max-width: 768px) {
-      .subtitle {
-        margin-top: 15px; /* الهاتف */
-      }
+      margin-top: -120px; /* يدخل في مساحة الصورة */
+      margin-bottom: 40px;
     }
 
     .btn {
@@ -68,6 +55,7 @@
     .footer {
       font-size: 13px;
       color: #777;
+      margin-top: 40px;
       margin-bottom: 40px;
     }
 
@@ -75,41 +63,14 @@
       color: #000;
       text-decoration: none;
       margin: 0 10px;
-      transition: 0.2s;
     }
 
-    .footer a:hover {
-      color: #000;
-    }
-
-    /* السيارات */
+    /* ===== السيارات ===== */
     .car-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 50px; /* اللابتوب */
-    }
-
-    @media screen and (max-width: 768px) {
-      .car-container {
-        margin-top: 30px; /* الهاتف */
-      }
-    }
-
-    /* زر Register */
-    .register-btn-container {
-      margin-top: 50px; /* بين السيارات والزر */
-    }
-
-    @media screen and (max-width: 768px) {
-      .register-btn-container {
-        margin-top: 30px;
-      }
-    }
-
-    /* Footer مسافة دقيقة */
-    .footer {
-      margin-top: 20px; /* بين زر Register والأزرار */
+      margin-top: 40px;
     }
 
     .car-card {
@@ -141,26 +102,42 @@
 
     .prev-btn { left: 5px; }
     .next-btn { right: 5px; }
+
+    /* ===== Register ===== */
+    .register-btn-container {
+      margin-top: 60px;
+    }
+
+    @media screen and (max-width: 768px) {
+      img {
+        width: 90vw;
+      }
+
+      .section-title {
+        margin-top: -80px;
+        font-size: 22px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- شعار -->
+  <!-- اللوغو -->
   <div class="container">
     <img src="logo.png" alt="Autospot Logo">
   </div>
 
-  <!-- جملة Available Cars -->
-  <div class="subtitle">Available Cars:</div>
+  <!-- عنوان السيارات -->
+  <div class="section-title">Available Cars</div>
 
-  <!-- عرض السيارات مباشرة تحت اللوغو -->
+  <!-- عرض السيارات -->
   <div class="car-container" id="carContainer"></div>
 
-  <!-- زر Register your car بعد السيارات -->
-  <div class="register-btn-container" style="text-align:center;">
+  <!-- زر Register -->
+  <div class="register-btn-container">
     <a
-      href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor"
+      href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform"
       class="btn car-sound"
       target="_blank"
     >
@@ -168,11 +145,11 @@
     </a>
   </div>
 
-  <!-- أزرار Instagram, TikTok, Contact us -->
+  <!-- Footer -->
   <div class="footer">
-    <a href="https://www.instagram.com/autospot.dz/?igsh=dnhhbjVubzFtMmY3#" target="_blank" class="click-sound">Instagram</a>
+    <a href="https://www.instagram.com/autospot.dz/" target="_blank" class="click-sound">Instagram</a>
     ·
-    <a href="https://www.tiktok.com/@autospot.dz?_r=1&_t=ZS-92AmG4ykFrm" target="_blank" class="click-sound">TikTok</a>
+    <a href="https://www.tiktok.com/@autospot.dz" target="_blank" class="click-sound">TikTok</a>
     ·
     <a href="mailto:autospotdz01@gmail.com" class="click-sound">Contact us</a>
   </div>
@@ -186,6 +163,7 @@
     <source src="car.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- JavaScript -->
   <script>
     const clickSound = document.getElementById("clickSound");
     const carSound = document.getElementById("carSound");
@@ -204,26 +182,36 @@
       });
     });
 
-    // جلب السيارات من cars.json
     fetch('cars.json')
       .then(response => response.json())
       .then(data => {
         const container = document.getElementById("carContainer");
+
         data.forEach(car => {
-          if(car.sold) return; // تجاهل السيارات المباعة
+          if (car.sold) return;
 
           let current = 0;
-          const images = car.images;
+          const images = [];
+
+          for (let i = 1; i <= car.imageCount; i++) {
+            images.push(`${car.images_folder}/${i}.jpeg`);
+          }
+
           const card = document.createElement("div");
           card.className = "car-card";
 
           card.innerHTML = `
             <div style="position:relative;">
-              <img src="${images[current]}" class="car-main-image">
-              ${images.length > 1 ? '<button class="prev-btn">&#10094;</button><button class="next-btn">&#10095;</button>' : ''}
+              <img src="${images[0]}" class="car-main-image">
+              ${images.length > 1
+                ? '<button class="prev-btn">&#10094;</button><button class="next-btn">&#10095;</button>'
+                : ''}
             </div>
             <h3>${car.brand} ${car.model} ${car.year}</h3>
-            <a href="tel:${car.phone}" style="display:block;margin:10px 0;padding:10px 0;background:black;color:white;border-radius:6px;text-decoration:none;">Call</a>
+            <a href="tel:${car.phone}"
+               style="display:block;margin:10px 0;padding:10px 0;background:black;color:white;border-radius:6px;text-decoration:none;">
+              Call
+            </a>
             <div style="margin-top:8px;">
               <a href="${car.instagram}" target="_blank" style="margin:0 5px;color:black;text-decoration:none;font-size:14px;">Instagram</a>
               <a href="${car.tiktok}" target="_blank" style="margin:0 5px;color:black;text-decoration:none;font-size:14px;">TikTok</a>
@@ -232,12 +220,14 @@
 
           container.appendChild(card);
 
-          if(images.length > 1){
+          if (images.length > 1) {
             const imgElement = card.querySelector(".car-main-image");
+
             card.querySelector(".prev-btn").addEventListener("click", () => {
               current = (current - 1 + images.length) % images.length;
               imgElement.src = images[current];
             });
+
             card.querySelector(".next-btn").addEventListener("click", () => {
               current = (current + 1) % images.length;
               imgElement.src = images[current];
