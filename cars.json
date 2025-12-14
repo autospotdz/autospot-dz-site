@@ -1,11 +1,12 @@
 [
   {
-    "brand": "btest",
-    "model": "mtest",
-    "year": 0000,
-    "image": "available_cars/bmw_e92_2008_front.jpeg",
+    "brand": "test",
+    "model": "test",
+    "year": 2000,
+    "images_folder": "available_cars/bmw_e92_2008",
     "instagram": "https://www.instagram.com/POST_LINK",
     "tiktok": "https://www.tiktok.com/POST_LINK",
+    "phone": "0673275377",
     "sold": false
   }
 ]
