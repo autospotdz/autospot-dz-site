@@ -46,7 +46,6 @@
     }
 
     .footer {
-      margin-top: 20px;
       font-size: 13px;
       color: #777;
       margin-bottom: 40px;
@@ -63,11 +62,35 @@
       color: #000;
     }
 
+    /* السيارات */
     .car-container {
-      margin-top: 10px; /* قريب من الشعار */
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      margin-top: 200px; /* اللابتوب */
+    }
+
+    /* الهواتف */
+    @media screen and (max-width: 768px) {
+      .car-container {
+        margin-top: 80px; /* الهاتف */
+      }
+    }
+
+    /* زر Register */
+    .register-btn-container {
+      margin-top: 200px; /* بين السيارات والزر */
+    }
+
+    @media screen and (max-width: 768px) {
+      .register-btn-container {
+        margin-top: 200px;
+      }
+    }
+
+    /* Footer مسافة دقيقة */
+    .footer {
+      margin-top: 80px; /* بين زر Register والأزرار */
     }
 
     .car-card {
@@ -109,11 +132,11 @@
     <img src="logo.png" alt="Autospot Logo">
   </div>
 
-  <!-- عرض السيارات مباشرة تحت الشعار -->
+  <!-- عرض السيارات مباشرة تحت اللوغو -->
   <div class="car-container" id="carContainer"></div>
 
-  <!-- زر Register your car أسفل السيارات بمسافة صغيرة -->
-  <div style="text-align:center; margin:10px 0;">
+  <!-- زر Register your car بعد السيارات -->
+  <div class="register-btn-container" style="text-align:center;">
     <a
       href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor"
       class="btn car-sound"
