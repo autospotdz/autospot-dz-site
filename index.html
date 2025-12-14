@@ -22,18 +22,18 @@
     }
 
     img {
-      width: 600px; /* صُغّر اللوغو ÷2 للّابتوب */
+      width: 1200px;
       max-width: 90vw;
       height: auto;
       display: block;
       margin: 0 auto;
     }
 
-    .section-title {
-      font-size: 26px;
+    .subtitle {
+      font-size: 20px;
+      color: #333;
+      margin-top: 10px;
       font-weight: bold;
-      margin-top: -120px; /* يدخل في مساحة الصورة */
-      margin-bottom: 40px;
     }
 
     .btn {
@@ -55,22 +55,34 @@
     .footer {
       font-size: 13px;
       color: #777;
-      margin-top: 40px;
       margin-bottom: 40px;
+      margin-top: 80px;
     }
 
     .footer a {
       color: #000;
       text-decoration: none;
       margin: 0 10px;
+      transition: 0.2s;
     }
 
-    /* ===== السيارات ===== */
+    /* السيارات */
     .car-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 40px;
+      margin-top: 100px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .car-container {
+        margin-top: 40px;
+      }
+    }
+
+    /* زر Register */
+    .register-btn-container {
+      margin-top: 200px;
     }
 
     .car-card {
@@ -102,42 +114,23 @@
 
     .prev-btn { left: 5px; }
     .next-btn { right: 5px; }
-
-    /* ===== Register ===== */
-    .register-btn-container {
-      margin-top: 60px;
-    }
-
-    @media screen and (max-width: 768px) {
-      img {
-        width: 90vw;
-      }
-
-      .section-title {
-        margin-top: -80px;
-        font-size: 22px;
-      }
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- اللوغو -->
+  <!-- الشعار -->
   <div class="container">
     <img src="logo.png" alt="Autospot Logo">
   </div>
 
-  <!-- عنوان السيارات -->
-  <div class="section-title">Available Cars</div>
-
-  <!-- عرض السيارات -->
+  <!-- Available Cars -->
   <div class="car-container" id="carContainer"></div>
 
-  <!-- زر Register -->
+  <!-- Register your car -->
   <div class="register-btn-container">
     <a
-      href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform"
+      href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor"
       class="btn car-sound"
       target="_blank"
     >
@@ -154,7 +147,7 @@
     <a href="mailto:autospotdz01@gmail.com" class="click-sound">Contact us</a>
   </div>
 
-  <!-- أصوات -->
+  <!-- Sounds -->
   <audio id="clickSound">
     <source src="click.mp3" type="audio/mpeg">
   </audio>
@@ -163,7 +156,6 @@
     <source src="car.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- JavaScript -->
   <script>
     const clickSound = document.getElementById("clickSound");
     const carSound = document.getElementById("carSound");
@@ -182,8 +174,9 @@
       });
     });
 
+    // Load cars
     fetch('cars.json')
-      .then(response => response.json())
+      .then(res => res.json())
       .then(data => {
         const container = document.getElementById("carContainer");
 
@@ -210,7 +203,7 @@
             <h3>${car.brand} ${car.model} ${car.year}</h3>
             <a href="tel:${car.phone}"
                style="display:block;margin:10px 0;padding:10px 0;background:black;color:white;border-radius:6px;text-decoration:none;">
-              Call
+               Call
             </a>
             <div style="margin-top:8px;">
               <a href="${car.instagram}" target="_blank" style="margin:0 5px;color:black;text-decoration:none;font-size:14px;">Instagram</a>
@@ -221,21 +214,20 @@
           container.appendChild(card);
 
           if (images.length > 1) {
-            const imgElement = card.querySelector(".car-main-image");
+            const img = card.querySelector(".car-main-image");
 
-            card.querySelector(".prev-btn").addEventListener("click", () => {
+            card.querySelector(".prev-btn").onclick = () => {
               current = (current - 1 + images.length) % images.length;
-              imgElement.src = images[current];
-            });
+              img.src = images[current];
+            };
 
-            card.querySelector(".next-btn").addEventListener("click", () => {
+            card.querySelector(".next-btn").onclick = () => {
               current = (current + 1) % images.length;
-              imgElement.src = images[current];
-            });
+              img.src = images[current];
+            };
           }
         });
-      })
-      .catch(err => console.error("Error loading cars.json:", err));
+      });
   </script>
 
 </body>
