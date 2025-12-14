@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Autospot DZ</title>
+
   <style>
     body {
       margin: 0;
@@ -12,19 +13,27 @@
       font-family: Arial, sans-serif;
       text-align: center;
     }
+
     .container {
+      position: relative;
+      width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px;
     }
+
     img {
+      width: 1200px;
       max-width: 90vw;
       height: auto;
       display: block;
       margin: 0 auto;
     }
+
     .btn {
-      margin: 20px auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 5cm);
       padding: 12px 28px;
       font-size: 18px;
       background: black;
@@ -33,106 +42,132 @@
       border-radius: 6px;
       cursor: pointer;
       text-decoration: none;
-      display: inline-block;
+      transition: 0.3s;
     }
+
+    .btn:hover {
+      opacity: 0.8;
+    }
+
     .footer {
-      margin-top: 40px;
+      margin-top: 140px;
       font-size: 13px;
       color: #777;
     }
+
     .footer a {
-      color: black;
+      color: #000; /* أسود بدل الأزرق */
       text-decoration: none;
       margin: 0 10px;
       transition: 0.2s;
     }
+
     .footer a:hover {
       color: #000;
     }
+
+    .car-container {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     .car-card {
       border: 1px solid #ddd;
-      padding: 15px;
-      margin: 20px auto;
-      max-width: 500px;
+      border-radius: 8px;
+      margin: 10px;
+      padding: 10px;
+      width: 280px;
       position: relative;
     }
-    .car-main-image {
+
+    .car-card img {
       width: 100%;
-      max-height: 300px;
-      object-fit: cover;
+      height: auto;
       border-radius: 6px;
     }
+
     .prev-btn, .next-btn {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 45%;
       background: rgba(0,0,0,0.5);
       color: white;
       border: none;
-      font-size: 24px;
-      padding: 4px 10px;
+      font-size: 20px;
+      padding: 4px 8px;
       cursor: pointer;
       border-radius: 4px;
     }
-    .prev-btn { left: 10px; }
-    .next-btn { right: 10px; }
-    .call-btn {
-      display: block;
-      margin: 10px 0;
-      padding: 10px 0;
-      background: black;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-    }
+
+    .prev-btn { left: 5px; }
+    .next-btn { right: 5px; }
   </style>
 </head>
+
 <body>
 
   <div class="container">
     <img src="logo.png" alt="Autospot Logo">
 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor"
-       class="btn car-sound" target="_blank">
+    <a
+      href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor"
+      class="btn car-sound"
+      target="_blank"
+    >
       Register your car
     </a>
   </div>
 
-  <div class="container" id="cars-container"></div>
+  <div class="car-container" id="carContainer"></div>
 
   <div class="footer">
-    <a href="https://www.instagram.com/autospot.dz/?igsh=dnhhbjVubzFtMmY3#" target="_blank" class="click-sound">Instagram</a> ·
-    <a href="https://www.tiktok.com/@autospot.dz?_r=1&_t=ZS-92AmG4ykFrm" target="_blank" class="click-sound">TikTok</a> ·
+    <a href="https://www.instagram.com/autospot.dz/?igsh=dnhhbjVubzFtMmY3#" target="_blank" class="click-sound">Instagram</a>
+    ·
+    <a href="https://www.tiktok.com/@autospot.dz?_r=1&_t=ZS-92AmG4ykFrm" target="_blank" class="click-sound">TikTok</a>
+    ·
     <a href="mailto:autospotdz01@gmail.com" class="click-sound">Contact us</a>
   </div>
 
-  <audio id="clickSound"><source src="click.mp3" type="audio/mpeg"></audio>
-  <audio id="carSound"><source src="car.mp3" type="audio/mpeg"></audio>
+  <!-- Sounds -->
+  <audio id="clickSound">
+    <source src="click.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="carSound">
+    <source src="car.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     const clickSound = document.getElementById("clickSound");
     const carSound = document.getElementById("carSound");
 
     document.querySelectorAll(".click-sound").forEach(el => {
-      el.addEventListener("click", () => { clickSound.currentTime = 0; clickSound.play(); });
-    });
-    document.querySelectorAll(".car-sound").forEach(el => {
-      el.addEventListener("click", () => { carSound.currentTime = 0; carSound.play(); });
+      el.addEventListener("click", () => {
+        clickSound.currentTime = 0;
+        clickSound.play();
+      });
     });
 
-    // تحميل cars.json
-    fetch("cars.json")
+    document.querySelectorAll(".car-sound").forEach(el => {
+      el.addEventListener("click", () => {
+        carSound.currentTime = 0;
+        carSound.play();
+      });
+    });
+
+    // جلب السيارات من cars.json
+    fetch('cars.json')
       .then(response => response.json())
       .then(data => {
-        const container = document.getElementById("cars-container");
+        const container = document.getElementById("carContainer");
         data.forEach(car => {
-          if(car.sold) return; // تجاهل السيارات المباعة
-
-          const card = document.createElement("div");
-          card.className = "car-card";
+          if(car.sold) return; // تجاهل المباعة
 
           let current = 0;
           const images = car.images; // الصور الفعلية فقط
+          const card = document.createElement("div");
+          card.className = "car-card";
 
           card.innerHTML = `
             <div style="position:relative;">
@@ -140,7 +175,7 @@
               ${images.length > 1 ? '<button class="prev-btn">&#10094;</button><button class="next-btn">&#10095;</button>' : ''}
             </div>
             <h3>${car.brand} ${car.model} ${car.year}</h3>
-            <a href="tel:${car.phone}" class="call-btn">Call</a>
+            <a href="tel:${car.phone}" style="display:block;margin:10px 0;padding:10px 0;background:black;color:white;border-radius:6px;text-decoration:none;">Call</a>
             <div style="margin-top:8px;">
               <a href="${car.instagram}" target="_blank" style="margin:0 5px;color:black;text-decoration:none;font-size:14px;">Instagram</a>
               <a href="${car.tiktok}" target="_blank" style="margin:0 5px;color:black;text-decoration:none;font-size:14px;">TikTok</a>
@@ -149,7 +184,6 @@
 
           container.appendChild(card);
 
-          // أزرار التنقل بين الصور
           if(images.length > 1){
             const imgElement = card.querySelector(".car-main-image");
             card.querySelector(".prev-btn").addEventListener("click", () => {
