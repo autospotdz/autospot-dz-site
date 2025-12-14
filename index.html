@@ -8,71 +8,87 @@
     body {
       margin: 0;
       padding: 0;
-      background: #ffffff;
       font-family: Arial, sans-serif;
       text-align: center;
+      background: #ffffff;
     }
 
     .container {
       position: relative;
-      width: 100%;
       max-width: 1200px;
       margin: 0 auto;
     }
 
-    img#logo {
+    /* الجملة كـ overlay فوق اللوغو */
+    .subtitle {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 50%; /* نقطة منتصف اللوغو */
+      margin-top: 100px; /* تحت منتصف اللوغو بمقدار 100px */
+      font-size: 32px;
+      font-weight: bold;
+      color: black;
+      z-index: 3; /* فوق اللوغو */
+    }
+
+    /* اللوغو */
+    .logo {
       width: 1200px;
       max-width: 90vw;
       height: auto;
       display: block;
       margin: 0 auto;
       position: relative;
-      z-index: 1; /* اللوغو layer أسفل الجملة */
+      z-index: 2;
     }
 
-    .overlay-text {
-      position: absolute;
-      top: 50%; /* تقريب منتصف اللوغو */
-      transform: translate(-50%, 50px); /* تحت منتصف اللوغو بـ 50px */
-      left: 50%;
-      font-size: 36px;
-      font-weight: bold;
-      color: black;
-      z-index: 2; /* فوق اللوغو */
-    }
-
+    /* عرض السيارات */
     .car-container {
-      position: absolute;
-      top: 50%; /* نرفعها فوق الجملة واللوغو */
-      transform: translate(-50%, -200px); /* تعديل حسب حجم الصور لتظهر فوقهم */
-      left: 50%;
-      width: 90%;
-      max-width: 1200px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      z-index: 3; /* أعلى layer */
+      margin-top: 200px; /* تحت الجملة بمقدار 200px */
+      position: relative;
+      z-index: 1;
     }
 
-    .car-card {
-      width: 280px;
+    .car-box {
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+      background: #f8f8f8;
       position: relative;
     }
 
-    .car-card img {
+    .car-box img {
       width: 100%;
       height: auto;
-      display: block;
     }
 
     .car-buttons {
       display: flex;
-      justify-content: space-between;
-      margin-top: 5px;
+      justify-content: space-around;
+      margin-top: 10px;
     }
 
-    .btn, .call-btn {
+    .car-buttons a {
+      text-decoration: none;
+      padding: 5px 10px;
+      background: black;
+      color: white;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    /* زر التسجيل */
+    .register-btn {
+      display: inline-block;
+      margin-top: 50px; /* بعد عرض السيارات */
       padding: 12px 28px;
       font-size: 18px;
       background: black;
@@ -81,63 +97,62 @@
       border-radius: 6px;
       cursor: pointer;
       text-decoration: none;
-      transition: 0.3s;
     }
 
-    .btn:hover, .call-btn:hover {
+    .register-btn:hover {
       opacity: 0.8;
     }
 
+    /* Footer */
     .footer {
       margin-top: 20px;
       font-size: 13px;
-      color: #000;
+      color: #777;
     }
 
     .footer a {
-      color: #000;
+      color: black; /* أصبح أسود بدل الأزرق */
       text-decoration: none;
       margin: 0 10px;
       transition: 0.2s;
     }
 
     .footer a:hover {
-      color: #777;
+      color: #000;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <img src="logo.png" alt="Autospot Logo" id="logo">
-    <div class="overlay-text">Online Car Showroom</div>
+    <!-- الجملة فوق اللوغو -->
+    <div class="subtitle">Online Car Showroom</div>
 
-    <!-- Car container -->
+    <!-- اللوغو -->
+    <img src="logo.png" alt="Autospot Logo" class="logo">
+
+    <!-- عرض السيارات -->
     <div class="car-container" id="carContainer">
-      <!-- السيارات سيتم توليدها من JSON -->
+      <!-- سيارات ستظهر هنا عن طريق JS أو HTML -->
     </div>
 
     <!-- زر تسجيل السيارة -->
-    <a
-      href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor"
-      class="btn car-sound"
-      target="_blank"
-      style="position: relative; margin-top: 400px; z-index:1;"
-    >
-      Register your car
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor" 
+       class="register-btn" target="_blank">
+       Register your car
     </a>
 
     <!-- Footer -->
     <div class="footer">
-      <a href="https://www.instagram.com/autospot.dz/?igsh=dnhhbjVubzFtMmY3#" target="_blank" class="click-sound">Instagram</a>
+      <a href="https://www.instagram.com/autospot.dz/?igsh=dnhhbjVubzFtMmY3#" target="_blank">Instagram</a>
       ·
-      <a href="https://www.tiktok.com/@autospot.dz?_r=1&_t=ZS-92AmG4ykFrm" target="_blank" class="click-sound">TikTok</a>
+      <a href="https://www.tiktok.com/@autospot.dz?_r=1&_t=ZS-92AmG4ykFrm" target="_blank">TikTok</a>
       ·
-      <a href="mailto:autospotdz01@gmail.com" class="click-sound">Contact us</a>
+      <a href="mailto:autospotdz01@gmail.com">Contact us</a>
     </div>
   </div>
 
-  <!-- Sounds -->
+  <!-- الأصوات -->
   <audio id="clickSound">
     <source src="click.mp3" type="audio/mpeg">
   </audio>
@@ -150,31 +165,35 @@
     const clickSound = document.getElementById("clickSound");
     const carSound = document.getElementById("carSound");
 
-    document.querySelectorAll(".click-sound").forEach(el => {
+    document.querySelectorAll(".footer a").forEach(el => {
       el.addEventListener("click", () => {
         clickSound.currentTime = 0;
         clickSound.play();
       });
     });
 
-    document.querySelectorAll(".car-sound").forEach(el => {
+    document.querySelectorAll(".register-btn").forEach(el => {
       el.addEventListener("click", () => {
         carSound.currentTime = 0;
         carSound.play();
       });
     });
 
-    // مثال JSON للسيارات
+    // مثال لعرض السيارات (يمكن استبداله ب JSON أو JS ديناميكي)
     const cars = [
       {
         name: "Toyota Corolla 2015",
-        folder: "available_cars/toyota_corolla_2015_c1",
+        images: ["available_cars/toyota_corolla_2015_c1/1.jpeg",
+                 "available_cars/toyota_corolla_2015_c1/2.jpeg",
+                 "available_cars/toyota_corolla_2015_c1/3.jpeg",
+                 "available_cars/toyota_corolla_2015_c1/4.jpeg"],
         instagram: "#",
         tiktok: "#"
       },
       {
         name: "BMW E92 2008",
-        folder: "available_cars/bmw_e92_2008_c1",
+        images: ["available_cars/bmw_e92_2008_c1/1.jpeg",
+                 "available_cars/bmw_e92_2008_c1/2.jpeg"],
         instagram: "#",
         tiktok: "#"
       }
@@ -183,45 +202,42 @@
     const carContainer = document.getElementById("carContainer");
 
     cars.forEach(car => {
-      const carCard = document.createElement("div");
-      carCard.className = "car-card";
+      const carBox = document.createElement("div");
+      carBox.classList.add("car-box");
 
-      // نعرض الصور تلقائيًا (1.jpeg إلى 4.jpeg إذا موجودة)
-      for(let i=1;i<=4;i++){
-        const img = document.createElement("img");
-        img.src = `${car.folder}/${i}.jpeg`;
-        img.onerror = ()=>{img.style.display='none'}; // إذا الصورة غير موجودة تختفي
-        carCard.appendChild(img);
-      }
+      let imgIndex = 0;
+      const imgEl = document.createElement("img");
+      imgEl.src = car.images[imgIndex];
+      carBox.appendChild(imgEl);
 
-      // أزرار Instagram و TikTok و Call
+      // أزرار الصور التالية والسابقة
+      imgEl.addEventListener("click", () => {
+        imgIndex = (imgIndex + 1) % car.images.length;
+        imgEl.src = car.images[imgIndex];
+      });
+
+      // أزرار Instagram و TikTok
       const btnDiv = document.createElement("div");
-      btnDiv.className = "car-buttons";
+      btnDiv.classList.add("car-buttons");
 
       const instaBtn = document.createElement("a");
       instaBtn.href = car.instagram;
-      instaBtn.target="_blank";
-      instaBtn.className="btn";
-      instaBtn.textContent="Instagram";
-      btnDiv.appendChild(instaBtn);
+      instaBtn.target = "_blank";
+      instaBtn.textContent = "Instagram";
 
       const tiktokBtn = document.createElement("a");
       tiktokBtn.href = car.tiktok;
-      tiktokBtn.target="_blank";
-      tiktokBtn.className="btn";
-      tiktokBtn.textContent="TikTok";
+      tiktokBtn.target = "_blank";
+      tiktokBtn.textContent = "TikTok";
+
+      btnDiv.appendChild(instaBtn);
       btnDiv.appendChild(tiktokBtn);
 
-      const callBtn = document.createElement("a");
-      callBtn.href="tel:0673275377";
-      callBtn.className="call-btn";
-      callBtn.textContent="Call";
-      btnDiv.appendChild(callBtn);
+      carBox.appendChild(btnDiv);
 
-      carCard.appendChild(btnDiv);
-      carContainer.appendChild(carCard);
+      carContainer.appendChild(carBox);
     });
-
   </script>
+
 </body>
 </html>
