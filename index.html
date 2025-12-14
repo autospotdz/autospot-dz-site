@@ -70,26 +70,24 @@
     }
 
     /* السيارات */
+    .available-cars-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
     .car-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 20px; /* فاصلة من جملة Available Cars */
+      margin-top: 0; /* أصبح التحكم من العنوان */
     }
 
     @media screen and (max-width: 768px) {
       .car-container {
-        margin-top: 20px;
+        margin-top: 0;
       }
-    }
-
-    /* عنوان Available Cars */
-    .available-title {
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 30px;
-      margin-bottom: 10px;
-      color: #333;
     }
 
     /* زر Register */
@@ -145,11 +143,10 @@
   <!-- شعار -->
   <div class="container">
     <img src="logo.png" alt="Autospot Logo">
-    <div class="subtitle">Online Car Showroom</div>
   </div>
 
-  <!-- عنوان Available Cars -->
-  <div class="available-title">Available Cars</div>
+  <!-- عنوان Available Cars فوق قسم السيارات -->
+  <div class="available-cars-title">Available Cars:</div>
 
   <!-- عرض السيارات مباشرة تحت العنوان -->
   <div class="car-container" id="carContainer"></div>
