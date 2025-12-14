@@ -22,11 +22,17 @@
     }
 
     img {
-      width: 1200px;
+      width: 600px; /* نصف حجم اللابتوب */
       max-width: 90vw;
       height: auto;
       display: block;
       margin: 0 auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      img {
+        width: 90vw; /* الهاتف يبقى كما هو */
+      }
     }
 
     /* جملة Available Cars */
