@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Autospot DZ</title>
-
   <style>
     body {
       margin: 0;
@@ -13,28 +12,19 @@
       font-family: Arial, sans-serif;
       text-align: center;
     }
-
-    /* ===== Logo & Register Button ===== */
     .container {
-      position: relative;
-      width: 100%;
       max-width: 1200px;
-      margin: 40px auto 0;
+      margin: 0 auto;
+      padding: 20px;
     }
-
-    .container img {
-      width: 1200px;
+    img {
       max-width: 90vw;
       height: auto;
       display: block;
       margin: 0 auto;
     }
-
     .btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, 5cm);
+      margin: 20px auto;
       padding: 12px 28px;
       font-size: 18px;
       background: black;
@@ -43,57 +33,35 @@
       border-radius: 6px;
       cursor: pointer;
       text-decoration: none;
-      transition: 0.3s;
+      display: inline-block;
     }
-
-    .btn:hover {
-      opacity: 0.8;
-    }
-
-    /* ===== Available Cars Section ===== */
-    #cars-section {
+    .footer {
       margin-top: 40px;
-      padding: 20px;
+      font-size: 13px;
+      color: #777;
     }
-
-    #cars-section h2 {
-      margin-bottom: 30px;
+    .footer a {
+      color: black;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: 0.2s;
     }
-
-    #cars-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
+    .footer a:hover {
+      color: #000;
     }
-
     .car-card {
-      width: 260px;
       border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 14px;
-      background: #fff;
+      padding: 15px;
+      margin: 20px auto;
+      max-width: 500px;
       position: relative;
     }
-
-    .car-card img {
+    .car-main-image {
       width: 100%;
-      border-radius: 8px;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 6px;
     }
-
-    .car-card h3 {
-      font-size: 16px;
-      margin: 10px 0;
-    }
-
-    .car-card a {
-      display: inline-block;
-      margin: 4px 4px;
-      font-size: 14px;
-      text-decoration: none;
-      border-bottom: none;
-    }
-
     .prev-btn, .next-btn {
       position: absolute;
       top: 50%;
@@ -101,121 +69,78 @@
       background: rgba(0,0,0,0.5);
       color: white;
       border: none;
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      font-size: 18px;
+      font-size: 24px;
+      padding: 4px 10px;
       cursor: pointer;
+      border-radius: 4px;
     }
-
-    .prev-btn { left: 5px; }
-    .next-btn { right: 5px; }
-
-    /* ===== Footer ===== */
-    .footer {
-      margin-top: 120px;
-      font-size: 13px;
-      color: #777;
-    }
-
-    .footer a {
-      color: #777;
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
+    .call-btn {
+      display: block;
+      margin: 10px 0;
+      padding: 10px 0;
+      background: black;
+      color: white;
+      border-radius: 6px;
       text-decoration: none;
-      margin: 0 10px;
-      transition: 0.2s;
-    }
-
-    .footer a:hover {
-      color: #000;
     }
   </style>
 </head>
-
 <body>
 
-  <!-- ===== Logo & Register Button ===== -->
   <div class="container">
     <img src="logo.png" alt="Autospot Logo">
 
-    <a
-      href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform"
-      class="btn car-sound"
-      target="_blank"
-    >
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScsf-nbxJieR-L_u1nei-Uf4Yw2XB3ItAXeOMeGywP8r9NXpw/viewform?usp=publish-editor"
+       class="btn car-sound" target="_blank">
       Register your car
     </a>
   </div>
 
-  <!-- ===== Available Cars ===== -->
-  <div id="cars-section">
-    <h2>Available Cars</h2>
-    <div id="cars-container"></div>
-  </div>
+  <div class="container" id="cars-container"></div>
 
-  <!-- ===== Footer ===== -->
   <div class="footer">
-    <a href="https://www.instagram.com/autospot.dz/" target="_blank" class="click-sound">Instagram</a>
-    ·
-    <a href="https://www.tiktok.com/@autospot.dz" target="_blank" class="click-sound">TikTok</a>
-    ·
+    <a href="https://www.instagram.com/autospot.dz/?igsh=dnhhbjVubzFtMmY3#" target="_blank" class="click-sound">Instagram</a> ·
+    <a href="https://www.tiktok.com/@autospot.dz?_r=1&_t=ZS-92AmG4ykFrm" target="_blank" class="click-sound">TikTok</a> ·
     <a href="mailto:autospotdz01@gmail.com" class="click-sound">Contact us</a>
   </div>
 
-  <!-- ===== Sounds ===== -->
-  <audio id="clickSound">
-    <source src="click.mp3" type="audio/mpeg">
-  </audio>
-
-  <audio id="carSound">
-    <source src="car.mp3" type="audio/mpeg">
-  </audio>
+  <audio id="clickSound"><source src="click.mp3" type="audio/mpeg"></audio>
+  <audio id="carSound"><source src="car.mp3" type="audio/mpeg"></audio>
 
   <script>
-    // ===== Sounds =====
     const clickSound = document.getElementById("clickSound");
     const carSound = document.getElementById("carSound");
 
-    document.addEventListener("click", e => {
-      if (e.target.classList.contains("click-sound")) {
-        clickSound.currentTime = 0;
-        clickSound.play();
-      }
-      if (e.target.classList.contains("car-sound")) {
-        carSound.currentTime = 0;
-        carSound.play();
-      }
+    document.querySelectorAll(".click-sound").forEach(el => {
+      el.addEventListener("click", () => { clickSound.currentTime = 0; clickSound.play(); });
+    });
+    document.querySelectorAll(".car-sound").forEach(el => {
+      el.addEventListener("click", () => { carSound.currentTime = 0; carSound.play(); });
     });
 
-    // ===== Load Cars =====
+    // تحميل cars.json
     fetch("cars.json")
-      .then(res => res.json())
-      .then(cars => {
+      .then(response => response.json())
+      .then(data => {
         const container = document.getElementById("cars-container");
+        data.forEach(car => {
+          if(car.sold) return; // تجاهل السيارات المباعة
 
-        cars.forEach(car => {
-          if(car.sold) return;
-
-          const images = [];
-          let i = 1;
-          while(true) {
-            const imgPath = `${car.images_folder}/${i}.jpeg`;
-            images.push(imgPath);
-            i++;
-            if(i>10) break;
-          }
-
-          let current = 0;
           const card = document.createElement("div");
           card.className = "car-card";
+
+          let current = 0;
+          const images = car.images; // الصور الفعلية فقط
 
           card.innerHTML = `
             <div style="position:relative;">
               <img src="${images[current]}" class="car-main-image">
-              <button class="prev-btn">&#10094;</button>
-              <button class="next-btn">&#10095;</button>
+              ${images.length > 1 ? '<button class="prev-btn">&#10094;</button><button class="next-btn">&#10095;</button>' : ''}
             </div>
             <h3>${car.brand} ${car.model} ${car.year}</h3>
-            <a href="tel:${car.phone}" style="display:block;margin:10px 0;padding:10px 0;background:black;color:white;border-radius:6px;text-decoration:none;">Call</a>
+            <a href="tel:${car.phone}" class="call-btn">Call</a>
             <div style="margin-top:8px;">
               <a href="${car.instagram}" target="_blank" style="margin:0 5px;color:black;text-decoration:none;font-size:14px;">Instagram</a>
               <a href="${car.tiktok}" target="_blank" style="margin:0 5px;color:black;text-decoration:none;font-size:14px;">TikTok</a>
@@ -224,17 +149,21 @@
 
           container.appendChild(card);
 
-          const imgElement = card.querySelector(".car-main-image");
-          card.querySelector(".prev-btn").addEventListener("click", () => {
-            current = (current - 1 + images.length) % images.length;
-            imgElement.src = images[current];
-          });
-          card.querySelector(".next-btn").addEventListener("click", () => {
-            current = (current + 1) % images.length;
-            imgElement.src = images[current];
-          });
+          // أزرار التنقل بين الصور
+          if(images.length > 1){
+            const imgElement = card.querySelector(".car-main-image");
+            card.querySelector(".prev-btn").addEventListener("click", () => {
+              current = (current - 1 + images.length) % images.length;
+              imgElement.src = images[current];
+            });
+            card.querySelector(".next-btn").addEventListener("click", () => {
+              current = (current + 1) % images.length;
+              imgElement.src = images[current];
+            });
+          }
         });
-      });
+      })
+      .catch(err => console.error("Error loading cars.json:", err));
   </script>
 
 </body>
